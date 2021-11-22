@@ -1,0 +1,34 @@
+{
+  "name": "tenderizer",
+  "description": "Slice a deep object into multiple shallow objects",
+  "version": "0.0.2",
+  "main": "lib/tenderizer.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minodisk/tenderizer.git"
+  },
+  "keywords": [
+    "flat"
+  ],
+  "author": "minodisk",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/minodisk/tenderizer/issues"
+  },
+  "homepage": "https://github.com/minodisk/tenderizer#readme",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "npm run build -- --watch",
+    "test": "jest",
+    "test:watch": "npm run test -- --watch"
+  },
+  "devDependencies": {
+    "@types/easy-table": "^1.2.0",
+    "easy-table": "^1.2.0",
+    "eslint": "^8.3.0",
+    "jest": "^27.3.1",
+    "ts-jest": "^27.0.7",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2"
+  }
+}
