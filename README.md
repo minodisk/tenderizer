@@ -1,0 +1,2 @@
+# suribachi
+Flatten deep object
