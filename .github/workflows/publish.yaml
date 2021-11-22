@@ -17,6 +17,8 @@ jobs:
         run: npm ci
       - name: Test
         run: npm test
+      - name: Coverage
+        uses: codecov/codecov-action@v2
       - name: Publish
         uses: JS-DevTools/npm-publish@v1
         with:

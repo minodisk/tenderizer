@@ -16,4 +16,6 @@ jobs:
       - name: Install modules
         run: npm ci
       - name: Test
-        run: npm test
+        run: npm
+      - name: Coverage
+        uses: codecov/codecov-action@v2
