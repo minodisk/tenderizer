@@ -6,28 +6,22 @@ export function tenderize(
   target: Struct,
   prefix: Array<string> = []
 ): Array<Struct> {
-  const t1 = decompose(target, prefix);
-  const t2 = slice(t1);
-  return t2.map(compose);
+  return slice(decompose(target, prefix)).map(compose);
 }
 
-function decompose(value: any, keys: Array<string>): Deep {
-  if (Array.isArray(value)) {
-    return decomposeArray(value, keys);
-  }
+function decompose(value: Struct, keys: Array<string>): Deep {
   if (isObject(value)) {
     return decomposeObject(value, keys);
   }
-  throw new Error(`target should be an object`);
+  throw new Error(`target isn't an object`);
 }
 
 function decomposeChild(value: any, keys: Array<string>): Shallow {
+  if (isObject(value)) {
+    return [compose(decomposeObject(value, keys))];
+  }
   if (Array.isArray(value)) {
     return decomposeArray(value, keys);
-  }
-  if (isObject(value)) {
-    const t = decomposeObject(value, keys);
-    return [compose(t)];
   }
   return [{ [keys.join(".")]: value }];
 }
@@ -68,5 +62,8 @@ function compose(shallow: Shallow): Struct {
 }
 
 function isObject(obj: any): boolean {
-  return Object.prototype.toString.call(obj) === "[object Object]";
+  return (
+    !Array.isArray(obj) &&
+    Object.prototype.toString.call(obj) === "[object Object]"
+  );
 }

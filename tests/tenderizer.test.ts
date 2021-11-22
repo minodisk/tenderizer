@@ -15,11 +15,15 @@ describe("target", () => {
     expect(() => tenderize(true as any)).toThrowError();
   });
 
+  it("dosn't allow array", () => {
+    expect(() => tenderize([])).toThrowError();
+  });
+
   it("empty", () => {
     expect(tenderize({})).toStrictEqual([]);
   });
 
-  it("shallow", () => {
+  it("shallow object", () => {
     expect(
       tenderize({
         a: 1,
