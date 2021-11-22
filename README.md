@@ -1,10 +1,10 @@
 ![Tenderizer](./tenderizer.svg)
 
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fminodisk%2Ftenderizer%2Fbadge%3Fref%3Dmain&style=flat-square)](https://actions-badge.atrox.dev/minodisk/tenderizer/goto?ref=main) [![codecov](https://img.shields.io/codecov/c/github/minodisk/tenderizer/main?style=flat-square&token=8ShEV6U5i2)](https://codecov.io/gh/minodisk/tenderizer) [![npm](https://img.shields.io/npm/v/tenderizer?style=flat-square)](https://www.npmjs.com/package/tenderizer)
+
 ---
 
 Slice a deep object into multiple shallow objects.
-
-[![codecov](https://img.shields.io/codecov/c/github/minodisk/tenderizer/main?style=flat-square&token=8ShEV6U5i2)](https://codecov.io/gh/minodisk/tenderizer)[![npm](https://img.shields.io/npm/v/tenderizer?style=flat-square)](https://www.npmjs.com/package/tenderizer)
 
 ## Installation
 
