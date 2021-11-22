@@ -15,7 +15,9 @@ jobs:
           node-version: 16
       - name: Install modules
         run: npm ci
+      - name: Build
+        run: npm build
       - name: Test
-        run: npm
+        run: npm test
       - name: Coverage
         uses: codecov/codecov-action@v2
