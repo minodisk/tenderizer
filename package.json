@@ -12,7 +12,11 @@
     "url": "git+https://github.com/minodisk/tenderizer.git"
   },
   "keywords": [
-    "flat"
+    "flat",
+    "slice",
+    "nested object",
+    "deep object",
+    "table"
   ],
   "author": "minodisk",
   "license": "Apache-2.0",
