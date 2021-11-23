@@ -51,7 +51,7 @@ describe("tenderize", () => {
       ]);
     });
 
-    it("object with shallow array", () => {
+    it("shallow array", () => {
       expect(
         tenderize({
           a: [1, 2],
@@ -59,21 +59,59 @@ describe("tenderize", () => {
       ).toStrictEqual([{ a: 1 }, { a: 2 }]);
     });
 
-    // it("object with nested array", () => {
-    //   expect(
-    //     tenderize({
-    //       a: [
-    //         [4, 5],
-    //         [6, 7],
-    //       ],
-    //     })
-    //   ).toStrictEqual([
-    //     { "a.0": 4, "a.1": 5 },
-    //     { "a.0": 6, "a.1": 7 },
-    //   ]);
-    // });
+    it("nested array", () => {
+      expect(
+        tenderize({
+          a: [
+            [4, 5],
+            [6, 7],
+          ],
+        })
+      ).toStrictEqual([
+        { "a.0": 4, "a.1": 5 },
+        { "a.0": 6, "a.1": 7 },
+      ]);
+    });
 
-    it("object with object array", () => {
+    it("deep array", () => {
+      expect(
+        tenderize({
+          a: [
+            [[1, 2]],
+            [
+              [3, 4],
+              [5, 6],
+            ],
+            [
+              [7, 8],
+              [9, 10],
+              [11, 12],
+            ],
+          ],
+        })
+      ).toStrictEqual([
+        {
+          "a.0.0": 1,
+          "a.0.1": 2,
+        },
+        {
+          "a.0.0": 3,
+          "a.0.1": 4,
+          "a.1.0": 5,
+          "a.1.1": 6,
+        },
+        {
+          "a.0.0": 7,
+          "a.0.1": 8,
+          "a.1.0": 9,
+          "a.1.1": 10,
+          "a.2.0": 11,
+          "a.2.1": 12,
+        },
+      ]);
+    });
+
+    it("object array", () => {
       expect(
         tenderize({
           a: [

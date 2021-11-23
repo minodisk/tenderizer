@@ -16,18 +16,30 @@ function decompose(value: Struct, keys: Array<string>): Deep {
   throw new Error(`target isn't an object`);
 }
 
-function decomposeChild(value: any, keys: Array<string>): Shallow {
+function decomposeChild(
+  value: any,
+  keys: Array<string>,
+  isParentArray: boolean = false
+): Shallow {
   if (isObject(value)) {
     return [compose(decomposeObject(value, keys))];
   }
   if (Array.isArray(value)) {
-    return decomposeArray(value, keys);
+    return decomposeArray(value, keys, isParentArray);
   }
   return [{ [keys.join(".")]: value }];
 }
 
-function decomposeArray(arr: Array<any>, keys: Array<string>): Deep {
-  return arr.map((v) => decomposeChild(v, keys));
+function decomposeArray(
+  arr: Array<any>,
+  keys: Array<string>,
+  isParentArray: boolean = false
+): Deep {
+  if (isParentArray) {
+    return arr.map((v, i) => decomposeChild(v, [...keys, `${i}`], true));
+  } else {
+    return arr.map((v) => decomposeChild(v, keys, true));
+  }
 }
 
 function decomposeObject(obj: Struct, keys: Array<string>): Deep {
